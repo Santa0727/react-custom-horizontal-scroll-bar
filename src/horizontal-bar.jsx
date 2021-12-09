@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import arrow_left_png from "./arrow-left.png";
 import arrow_right_png from "./arrow-right.png";
 import sectionItems from "./section-items";
 
-const maximumMarginLeft = 650;
+const maximumMarginLeft = 850;
 const defaultTitle = "Section a point in my journey to learn more";
 
 const NumberItem = ({ item, setTitle }) => {
@@ -38,6 +38,7 @@ const NumberItem = ({ item, setTitle }) => {
 };
 
 const NavNoHover = () => {
+  const navHover = useRef();
   const [title, setTitle] = useState();
   const [pos, setPos] = useState(0);
   const [showArrow, setShowArrow] = useState(false);
@@ -58,9 +59,21 @@ const NavNoHover = () => {
   const mouseLeave = (evt) => {
     setShowArrow(false);
   };
+  const stopScrolling = (evt) => {
+    evt.preventDefault();
+  };
+
+  useEffect(() => {
+    if (navHover.current) {
+      navHover.current.addEventListener("mousewheel", stopScrolling.bind(this), { passive: false });
+    }
+    return () => {
+      navHover.current.removeEventListener("mousewheel", stopScrolling.bind(this));
+    };
+  }, []);
 
   return (
-    <div className="nav-no-hover" onMouseOver={mouseOver.bind(this)} onMouseLeave={mouseLeave.bind(this)}>
+    <div className="nav-no-hover" onMouseOver={mouseOver.bind(this)} onMouseLeave={mouseLeave.bind(this)} ref={(e) => (navHover.current = e)}>
       <div className="point-label">{title ?? defaultTitle}</div>
       <div className={`arrow-line ${showArrow ? "" : "hide"}`}>
         <img src={arrow_left_png} alt="arrow-left" onMouseUp={moveLeft.bind(this)} onMouseDown={moveLeft.bind(this)} />

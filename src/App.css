@@ -1,17 +1,21 @@
-.App {
+.horizontal-bar-app {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 141, 49);
+  z-index: 100;
 }
 
 .horizontal-bar {
-  width: 600px;
+  width: 800px;
   overflow: hidden;
+  z-index: 100;
+  height: 3000px;
 }
 
 .nav-no-hover {
   padding: 2px;
+  z-index: 100;
 }
 
 .point-label {
@@ -22,6 +26,8 @@
   line-height: 1.577;
   text-align: center;
   height: 80px;
+  margin: 10px 50px 30px 50px;
+  z-index: 100;
 }
 
 .numbers-line {
@@ -30,12 +36,14 @@
   border-style: solid;
   margin-bottom: -9.5px;
   background-color: rgb(204, 159, 82);
+  z-index: 100;
 }
 
 .numbers-body {
   width: 1200px;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .number-item {
@@ -46,6 +54,7 @@
   gap: 20px;
   position: relative;
   min-width: 100px;
+  z-index: 100;
 }
 
 .number-point {
@@ -56,6 +65,7 @@
   cursor: pointer;
   position: absolute;
   top: 1px;
+  z-index: 100;
 }
 
 .strong-point {
@@ -63,6 +73,7 @@
   width: 29px;
   height: 28px;
   margin-top: -6px;
+  z-index: 100;
 }
 
 .number-value {
@@ -75,9 +86,11 @@
   min-height: 150px;
   display: flex;
   align-items: center;
+  z-index: 100;
 }
 .number-value img {
   max-height: 80px;
+  z-index: 100;
 }
 
 .arrow-line {
@@ -86,13 +99,15 @@
   justify-content: space-between;
   margin-top: -6.5px;
   position: absolute;
-  width: 600px;
-  z-index: 1;
+  width: 800px;
+  z-index: 101;
 }
 .arrow-line img {
   cursor: pointer;
+  z-index: 100;
 }
 
 .hide {
   display: none !important;
+  z-index: 100;
 }

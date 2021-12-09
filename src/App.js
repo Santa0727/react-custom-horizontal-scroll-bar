@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="horizontal-bar-app">
       <HorizontalBar />
     </div>
   );
