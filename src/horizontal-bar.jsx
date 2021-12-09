@@ -19,7 +19,7 @@ const NumberItem = ({ item, setTitle }) => {
   };
 
   return (
-    <div className="number-item" onMouseOver={hover.bind(this)} onMouseLeave={leave.bind(this)}>
+    <div className="number-item" onMouseOver={hover.bind(this)} onMouseLeave={leave.bind(this)} id={`section_item_${item.id}`}>
       {isOn ? (
         <>
           <div className="number-point strong-point"></div>
