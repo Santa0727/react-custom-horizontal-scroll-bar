@@ -1,64 +1,51 @@
-.horizontal-bar-app {
+#horizontal-scrollbar .horizontal-bar-app {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: rgb(0, 141, 49);
   z-index: 100;
+  background-color: green;
 }
-
-.horizontal-bar {
-  width: 800px;
+#horizontal-scrollbar .horizontal-bar {
   overflow: hidden;
   z-index: 100;
-  height: 3000px;
 }
-
-.nav-no-hover {
+#horizontal-scrollbar .nav-no-hover {
   padding: 2px;
   z-index: 100;
 }
-
-.point-label {
+#horizontal-scrollbar .point-label {
   font-size: 25px;
   font-family: revert;
-  color: rgb(204, 159, 82);
+  color: #cc9f52;
   text-transform: uppercase;
   line-height: 1.577;
   text-align: center;
   height: 80px;
-  margin: 10px 50px 30px 50px;
+  margin: 10px 50px 30px;
   z-index: 100;
 }
-
-.numbers-line {
-  border-width: 2px;
-  border-color: rgb(204, 159, 82);
-  border-style: solid;
+#horizontal-scrollbar .numbers-line {
+  border: 2px solid #cc9f52;
   margin-bottom: -9.5px;
-  background-color: rgb(204, 159, 82);
+  background-color: #cc9f52;
   z-index: 100;
 }
-
-.numbers-body {
-  width: 1200px;
-  display: flex;
-  justify-content: space-between;
+#horizontal-scrollbar .numbers-body {
   z-index: 100;
 }
-
-.number-item {
+#horizontal-scrollbar .number-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  grid-gap: 20px;
   gap: 20px;
   position: relative;
   min-width: 100px;
   z-index: 100;
 }
-
-.number-point {
-  background-color: rgb(204, 159, 82);
+#horizontal-scrollbar .number-point {
+  background-color: #cc9f52;
   width: 15px;
   height: 14px;
   border-radius: 50%;
@@ -67,19 +54,17 @@
   top: 1px;
   z-index: 100;
 }
-
-.strong-point {
-  background-color: rgb(255, 255, 255);
+#horizontal-scrollbar .strong-point {
+  background-color: #fff;
   width: 29px;
   height: 28px;
   margin-top: -6px;
   z-index: 100;
 }
-
-.number-value {
+#horizontal-scrollbar .number-value {
   font-size: 80px;
   font-family: "Fiona";
-  color: rgb(251, 251, 251);
+  color: #fbfbfb;
   line-height: 0.89;
   text-align: center;
   cursor: pointer;
@@ -88,26 +73,25 @@
   align-items: center;
   z-index: 100;
 }
-.number-value img {
+#horizontal-scrollbar .number-value img {
   max-height: 80px;
   z-index: 100;
 }
-
-.arrow-line {
+#horizontal-scrollbar .arrow-line {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: -6.5px;
+  width: 100%;
   position: absolute;
-  width: 800px;
+  padding-right: 70px;
   z-index: 101;
 }
-.arrow-line img {
+#horizontal-scrollbar .arrow-line img {
   cursor: pointer;
   z-index: 100;
 }
-
-.hide {
+#horizontal-scrollbar .hide {
   display: none !important;
   z-index: 100;
 }
