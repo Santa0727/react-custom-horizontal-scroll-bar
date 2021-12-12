@@ -1,3 +1,3 @@
 # React Custom Horizontal Scollbar to use in WordPress shortcode
 
-![custom-horizontal-scoll-bar](https://user-images.githubusercontent.com/54430634/145321263-4111f843-69f2-4161-8c1c-cf958f9eee87.png)
+![slick-slider](https://user-images.githubusercontent.com/54430634/145701845-c804d362-2eca-46be-ae00-06cfb88fd0bb.png)
