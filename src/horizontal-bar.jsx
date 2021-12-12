@@ -49,6 +49,7 @@ const NumberItem = ({ item, setTitle }) => {
     <div className="number-item" onMouseOver={hover.bind(this)} onMouseLeave={leave.bind(this)} id={`section_item_${item.id}`} onClick={goToSection.bind(this)}>
       {isOn ? (
         <>
+          <div className="orange-value">{item.label}</div>
           <div className="number-point strong-point"></div>
           <div className="number-value">
             <img src={item.png} alt="item.label" />
@@ -68,7 +69,6 @@ const NavNoHover = () => {
   const navHover = useRef();
   const sliderWrapper = useRef();
   const [title, setTitle] = useState();
-  const [showArrow, setShowArrow] = useState(false);
 
   const moveRight = () => {
     sliderWrapper.current.slickNext();
@@ -79,12 +79,6 @@ const NavNoHover = () => {
   const onWheel = (evt) => {
     if (evt.deltaY > 0) moveRight();
     else moveLeft();
-  };
-  const mouseOver = (evt) => {
-    setShowArrow(true);
-  };
-  const mouseLeave = (evt) => {
-    setShowArrow(false);
   };
   const stopScrolling = (evt) => {
     evt.preventDefault();
@@ -100,9 +94,9 @@ const NavNoHover = () => {
   }, []);
 
   return (
-    <div className="nav-no-hover" onMouseOver={mouseOver.bind(this)} onMouseLeave={mouseLeave.bind(this)} ref={(e) => (navHover.current = e)}>
+    <div className="nav-no-hover" ref={(e) => (navHover.current = e)}>
       <div className="point-label">{title ?? defaultTitle}</div>
-      <div className={`arrow-line ${showArrow ? "" : "hide"}`}>
+      <div className="arrow-line">
         <img src={arrow_left_png} alt="arrow-left" onMouseUp={moveLeft.bind(this)} onMouseDown={moveLeft.bind(this)} />
         <img src={arrow_right_png} alt="arrow-right" onMouseUp={moveRight.bind(this)} onMouseDown={moveRight.bind(this)} />
       </div>
