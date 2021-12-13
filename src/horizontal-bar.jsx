@@ -12,19 +12,19 @@ const responsive = [
   {
     breakpoint: 1024,
     settings: {
-      slidesToShow: 3,
+      slidesToShow: 5,
     },
   },
   {
     breakpoint: 600,
     settings: {
-      slidesToShow: 2,
+      slidesToShow: 3,
     },
   },
   {
     breakpoint: 480,
     settings: {
-      slidesToShow: 1,
+      slidesToShow: 3,
     },
   },
 ];
@@ -93,7 +93,7 @@ const NavNoHover = () => {
       </div>
       <div className="numbers-line"></div>
       <div className="numbers-body">
-        <Slider speed={500} slidesToShow={5} slidesToScroll={1} arrows={false} ref={(r) => (sliderWrapper.current = r)} responsive={responsive} adaptiveHeight={true} centerPadding="15px">
+        <Slider speed={500} slidesToShow={6} slidesToScroll={1} arrows={false} ref={(r) => (sliderWrapper.current = r)} responsive={responsive} adaptiveHeight={true} centerPadding="15px">
           {sectionItems.map((item) => (
             <NumberItem key={item.id} item={item} setTitle={setTitle} />
           ))}
