@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -30,6 +30,7 @@ const responsive = [
 ];
 
 const NumberItem = ({ item, setTitle }) => {
+  const currentX = useRef();
   const [isOn, setIsOn] = useState(false);
 
   const hover = () => {
@@ -40,13 +41,20 @@ const NumberItem = ({ item, setTitle }) => {
     setTitle(null);
     setIsOn(false);
   };
+  const mouseDown = (event) => {
+    currentX.current = event.clientX;
+  };
+  const mouseUp = (event) => {
+    if (event.clientX !== currentX.current) return;
+    goToSection();
+  };
   const goToSection = () => {
     const element = document.getElementById(`section_id_${item.id}`);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="number-item" onMouseOver={hover.bind(this)} onMouseLeave={leave.bind(this)} id={`section_item_${item.id}`} onClick={goToSection.bind(this)}>
+    <div className="number-item" onMouseOver={hover.bind(this)} onMouseLeave={leave.bind(this)} id={`section_item_${item.id}`} onMouseDown={mouseDown.bind(this)} onMouseUp={mouseUp.bind(this)}>
       {isOn ? (
         <>
           <div className="orange-value">{item.label}</div>
@@ -66,7 +74,6 @@ const NumberItem = ({ item, setTitle }) => {
 };
 
 const NavNoHover = () => {
-  const navHover = useRef();
   const sliderWrapper = useRef();
   const [title, setTitle] = useState();
 
@@ -76,32 +83,16 @@ const NavNoHover = () => {
   const moveLeft = () => {
     sliderWrapper.current.slickPrev();
   };
-  const onWheel = (evt) => {
-    if (evt.deltaY > 0) moveRight();
-    else moveLeft();
-  };
-  const stopScrolling = (evt) => {
-    evt.preventDefault();
-  };
-
-  useEffect(() => {
-    if (navHover.current) {
-      navHover.current.addEventListener("mousewheel", stopScrolling.bind(this), { passive: false });
-    }
-    return () => {
-      navHover.current.removeEventListener("mousewheel", stopScrolling.bind(this));
-    };
-  }, []);
 
   return (
-    <div className="nav-no-hover" ref={(e) => (navHover.current = e)}>
+    <div className="nav-no-hover">
       <div className="point-label">{title ?? defaultTitle}</div>
       <div className="arrow-line">
         <img src={arrow_left_png} alt="arrow-left" onMouseUp={moveLeft.bind(this)} onMouseDown={moveLeft.bind(this)} />
         <img src={arrow_right_png} alt="arrow-right" onMouseUp={moveRight.bind(this)} onMouseDown={moveRight.bind(this)} />
       </div>
-      <div className="numbers-line" onWheel={onWheel.bind(this)}></div>
-      <div className="numbers-body" onWheel={onWheel.bind(this)}>
+      <div className="numbers-line"></div>
+      <div className="numbers-body">
         <Slider speed={500} slidesToShow={5} slidesToScroll={1} arrows={false} ref={(r) => (sliderWrapper.current = r)} responsive={responsive} adaptiveHeight={true} centerPadding="15px">
           {sectionItems.map((item) => (
             <NumberItem key={item.id} item={item} setTitle={setTitle} />
